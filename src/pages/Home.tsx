@@ -78,11 +78,14 @@ function FilterSelect({
 /* ── Hero ─────────────────────────────────────────────── */
 function Hero() {
   return (
-    <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-background text-foreground">
-      {/* Mosaico de camisetas reales de varias selecciones, difuminado hacia el negro */}
+    <section className="relative -mt-12 flex min-h-[90vh] items-center overflow-hidden bg-background pt-12 text-foreground">
+      {/* Foto de fondo del hero, fundida hacia el fondo claro */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-70"
-        style={{ backgroundImage: "url('/hero-jerseys.jpg')" }}
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1556816214-fda351e4a7fb?q=80&w=1600&auto=format&fit=crop')",
+        }}
       />
       {/* Capas de degradado: oscurece la izquierda (texto) y funde con la página */}
       <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/25" />

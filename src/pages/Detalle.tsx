@@ -1,20 +1,20 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, TriangleAlert, Truck, ShieldCheck, MessageCircle } from 'lucide-react'
+import {
+  ArrowLeft,
+  TriangleAlert,
+  Truck,
+  ShieldCheck,
+  MessageCircle,
+  ShoppingBag,
+} from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
-import { WhatsappIcon } from '@/components/icons'
 import { Reveal } from '@/components/Reveal'
+import { useCart } from '@/lib/cart'
 import { supabase, type Camiseta } from '@/supabase'
-import {
-  FALLBACK_IMG,
-  formatPrecio,
-  SEXOS,
-  UBICACION,
-  WHATSAPP,
-  whatsappLink,
-} from '@/lib/constants'
+import { FALLBACK_IMG, formatPrecio, SEXOS, UBICACION, WHATSAPP } from '@/lib/constants'
 
 export function Detalle() {
   const { id } = useParams<{ id: string }>()
@@ -25,6 +25,7 @@ export function Detalle() {
   const [talla, setTalla] = useState('')
   const [sexo, setSexo] = useState('')
   const [imgError, setImgError] = useState(false)
+  const { add, setOpen } = useCart()
 
   useEffect(() => {
     let activo = true
@@ -179,19 +180,16 @@ export function Detalle() {
 
           {/* CTA */}
           <Button
-            render={
-              agotado ? (
-                <button type="button" />
-              ) : (
-                <a href={whatsappLink(c, talla, sexo)} target="_blank" rel="noreferrer" />
-              )
-            }
+            onClick={() => {
+              add(c, talla, sexo)
+              setOpen(true)
+            }}
             disabled={agotado}
             size="lg"
             className="h-13 w-full text-base font-medium"
           >
-            <WhatsappIcon className="size-5" />
-            {agotado ? 'Agotado' : 'Pedir por WhatsApp'}
+            <ShoppingBag className="size-5" />
+            {agotado ? 'Agotado' : 'Agregar al carrito'}
           </Button>
 
           {/* Garantías */}

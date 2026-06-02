@@ -1,7 +1,9 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { ShoppingBag } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { JerseyIcon, WhatsappIcon } from '@/components/icons'
-import { MARCA, WHATSAPP } from '@/lib/constants'
+import { JerseyIcon } from '@/components/icons'
+import { MARCA } from '@/lib/constants'
+import { useCart } from '@/lib/cart'
 
 const LINKS = [
   { label: 'Catálogo', hash: '#catalogo' },
@@ -12,6 +14,7 @@ const LINKS = [
 export function Navbar() {
   const { pathname } = useLocation()
   const navigate = useNavigate()
+  const { count, setOpen } = useCart()
 
   // En la home navega por ancla; en detalle vuelve a la home y al ancla.
   const go = (hash: string) => {
@@ -42,12 +45,18 @@ export function Navbar() {
         </div>
 
         <Button
-          render={<a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer" />}
+          onClick={() => setOpen(true)}
           size="sm"
-          className="rounded-full"
+          aria-label="Abrir carrito"
+          className="relative rounded-full"
         >
-          <WhatsappIcon className="size-4" />
-          <span className="hidden sm:inline">WhatsApp</span>
+          <ShoppingBag className="size-4" />
+          <span className="hidden sm:inline">Carrito</span>
+          {count > 0 && (
+            <span className="absolute -right-1.5 -top-1.5 flex size-5 items-center justify-center rounded-full border border-border bg-background text-[10px] font-bold text-foreground shadow-sm">
+              {count}
+            </span>
+          )}
         </Button>
       </nav>
     </header>
