@@ -38,7 +38,7 @@ const TODOS = 'Todos'
 /** Etiqueta "eyebrow" sobria sobre cada sección. */
 function SectionLabel({ children }: { children: string }) {
   return (
-    <span className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+    <span className="text-sm font-semibold uppercase tracking-wide text-primary">
       {children}
     </span>
   )
