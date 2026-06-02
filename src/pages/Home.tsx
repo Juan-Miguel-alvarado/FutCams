@@ -79,9 +79,9 @@ function FilterSelect({
 function Hero() {
   return (
     <section className="relative -mt-12 flex min-h-[90vh] items-center overflow-hidden bg-background pt-12 text-foreground">
-      {/* Foto de fondo del hero, fundida hacia el fondo claro */}
+      {/* Foto de fondo del hero (oculta en móvil), fundida hacia el fondo claro */}
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 hidden bg-cover bg-center sm:block"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1556816214-fda351e4a7fb?q=80&w=1600&auto=format&fit=crop')",
@@ -99,7 +99,7 @@ function Hero() {
           </Reveal>
           <Reveal delay={120}>
             <h1 className="mt-6 text-5xl font-bold tracking-tight sm:text-7xl">
-              Viste los colores del mundo
+              Viste los colores del mundial
             </h1>
           </Reveal>
           <Reveal delay={240}>
