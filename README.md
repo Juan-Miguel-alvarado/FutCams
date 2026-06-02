@@ -6,6 +6,9 @@ through WhatsApp. Deliveries go out every Thursday.
 
 > _"La del mundo, a tu puerta."_
 
+<img width="1321" height="663" alt="image" src="https://github.com/user-attachments/assets/af34e759-aef9-4054-9829-0d3612572000" />
+
+
 ## Features
 
 - **Catalog** with live filtering by country, type (`1.1` / `Conjunto AAA`) and sex,
